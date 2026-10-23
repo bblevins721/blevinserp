@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#132a3a" />
+    <meta name="description" content="BlevinsERP operational command center" />
+    <title>BlevinsERP — Command Center</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">B</div>
+          <div>
+            <div class="brand-name">Blevins<span>ERP</span></div>
+            <div class="brand-caption">Enterprise operations</div>
+          </div>
+        </div>
+
+        <div class="workspace-switcher">
+          <div class="workspace-avatar">BH</div>
+          <div class="workspace-copy">
+            <span class="overline">Workspace</span>
+            <strong>Blevins Holdings</strong>
+          </div>
+          <button class="icon-button icon-button--quiet" type="button" aria-label="Switch workspace" data-action="workspace-switch">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+          </button>
+        </div>
+
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <div class="nav-label">Workspace</div>
+          <button class="nav-item is-active" type="button" data-view="overview" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /></svg>
+            <span>Overview</span>
+          </button>
+          <button class="nav-item" type="button" data-view="finance">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10m7 10V4m7 16v-7" /><path d="M3 20h18" /></svg>
+            <span>Finance</span>
+          </button>
+          <button class="nav-item" type="button" data-view="procurement">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1 12H5L4 7Z" /><path d="M8 7a4 4 0 0 1 8 0M9 11h.01M15 11h.01" /></svg>
+            <span>Procurement</span>
+          </button>
+          <button class="nav-item" type="button" data-view="people">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0M15 15c2.8-.2 5 1.4 5 4" /></svg>
+            <span>People</span>
+          </button>
+          <button class="nav-item" type="button" data-view="operations">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18" /><circle cx="12" cy="12" r="8" /></svg>
+            <span>Operations</span>
+          </button>
+
+          <div class="nav-label nav-label--spaced">Insights</div>
+          <button class="nav-item" type="button" data-view="reports">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v15" /><path d="M8 9h8M8 13h8M8 17h5" /></svg>
+            <span>Reports</span>
+          </button>
+          <button class="nav-item" type="button" data-view="settings">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" /><path d="m19.4 15 .1.1a2 2 0 0 1-2.8 2.8l-.1-.1a2 2 0 0 0-3.4 1.4v.2a2 2 0 0 1-4 0v-.2a2 2 0 0 0-3.4-1.4l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1A2 2 0 0 0 1.7 11H1.5a2 2 0 0 1 0-4h.2a2 2 0 0 0 1.4-3.4L3 3.5A2 2 0 0 1 5.8.7l.1.1A2 2 0 0 0 9.3-.6V-.8a2 2 0 0 1 4 0v.2a2 2 0 0 0 3.4 1.4l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1A2 2 0 0 0 20.9 7h.2a2 2 0 0 1 0 4h-.2a2 2 0 0 0-1.5 4Z" transform="translate(0 2) scale(.83)" /></svg>
+            <span>Settings</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="health-card">
+            <div class="health-card__topline"><span class="status-dot"></span> Workspace health</div>
+            <strong>Ready for configuration</strong>
+            <div class="health-progress"><span></span></div>
+            <small>Core shell online · Ledger not connected</small>
+          </div>
+          <button class="help-link" type="button" data-action="help">
+            <span class="help-icon">?</span>
+            <span>Help center</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="main-shell">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="mobile-nav-toggle icon-button" type="button" aria-label="Open navigation" data-action="toggle-sidebar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+            </button>
+            <div class="breadcrumbs"><span>Blevins Holdings</span><span class="breadcrumb-separator">/</span><strong id="breadcrumb-current">Overview</strong></div>
+          </div>
+          <div class="topbar-actions">
+            <label class="search-box" for="global-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
+              <input id="global-search" type="search" placeholder="Search workspace" autocomplete="off" />
+              <kbd>⌘ K</kbd>
+            </label>
+            <button class="icon-button notification-button" type="button" aria-label="Notifications" data-action="notifications">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" /></svg>
+              <span class="notification-badge">3</span>
+            </button>
+            <button class="profile-chip" type="button" data-action="profile" aria-label="Open user menu">
+              <span class="profile-avatar">BB</span>
+              <span class="profile-copy"><strong>Benjamin</strong><small>Administrator</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <main class="content" id="main-content">
+          <div class="demo-banner">
+            <div class="demo-banner__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z" /><path d="m3 12 9 4.5 9-4.5M3 16.5l9 4.5 9-4.5" /></svg></div>
+            <div><strong>Starter workspace</strong><span>This command center is running on illustrative data until a ledger is connected.</span></div>
+            <button class="text-button" type="button" data-action="connect-ledger">Connect a ledger <span aria-hidden="true">→</span></button>
+          </div>
+
+          <section id="overview-view" class="view" aria-labelledby="page-title">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow" id="today-label">Friday, October 23, 2026</div>
+                <h1 id="page-title">Good morning, Benjamin.</h1>
+                <p>One clear view of the business, from cash to commitments.</p>
+              </div>
+              <div class="heading-actions">
+                <button class="button button--secondary" type="button" data-action="export"><span class="button-icon">↓</span> Export snapshot</button>
+                <button class="button button--primary" type="button" data-action="new-transaction"><span class="button-icon">＋</span> New transaction</button>
+              </div>
+            </div>
+
+            <div class="metric-grid">
+              <article class="metric-card metric-card--featured">
+                <div class="metric-card__topline"><span>Cash &amp; equivalents</span><span class="metric-icon metric-icon--light">$</span></div>
+                <div class="metric-value">$552.4<span class="metric-unit">M</span></div>
+                <div class="metric-foot"><span class="trend trend--positive">↗ 12.8%</span><span>vs. prior period</span></div>
+                <div class="sparkline sparkline--light" aria-hidden="true"><span style="height: 26%"></span><span style="height: 36%"></span><span style="height: 30%"></span><span style="height: 48%"></span><span style="height: 42%"></span><span style="height: 62%"></span><span style="height: 72%"></span><span style="height: 86%"></span><span style="height: 78%"></span><span style="height: 100%"></span></div>
+              </article>
+              <article class="metric-card">
+                <div class="metric-card__topline"><span>Accounts receivable</span><span class="metric-icon">↗</span></div>
+                <div class="metric-value">$211.0<span class="metric-unit">M</span></div>
+                <div class="metric-foot"><span class="trend trend--positive">↗ 5.4%</span><span>vs. prior period</span></div>
+                <div class="sparkline" aria-hidden="true"><span style="height: 50%"></span><span style="height: 42%"></span><span style="height: 54%"></span><span style="height: 46%"></span><span style="height: 68%"></span><span style="height: 60%"></span><span style="height: 73%"></span><span style="height: 66%"></span><span style="height: 80%"></span><span style="height: 94%"></span></div>
+              </article>
+              <article class="metric-card">
+                <div class="metric-card__topline"><span>Committed spend</span><span class="metric-icon metric-icon--warn">↘</span></div>
+                <div class="metric-value">$3.2<span class="metric-unit">M</span></div>
+                <div class="metric-foot"><span class="trend trend--positive">↘ 8.1%</span><span>vs. prior period</span></div>
+                <div class="sparkline" aria-hidden="true"><span style="height: 86%"></span><span style="height: 74%"></span><span style="height: 78%"></span><span style="height: 66%"></span><span style="height: 70%"></span><span style="height: 56%"></span><span style="height: 62%"></span><span style="height: 49%"></span><span style="height: 43%"></span><span style="height: 34%"></span></div>
+              </article>
+              <article class="metric-card">
+                <div class="metric-card__topline"><span>Open approvals</span><span class="metric-icon metric-icon--purple">✓</span></div>
+                <div class="metric-value">12</div>
+                <div class="metric-foot"><span class="trend trend--neutral">4 due today</span><span>across 3 teams</span></div>
+                <div class="approval-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              </article>
+            </div>
+
+            <div class="dashboard-grid dashboard-grid--main">
+              <section class="card cashflow-card" aria-labelledby="cashflow-title">
+                <div class="card-header">
+                  <div><div class="eyebrow">Liquidity overview</div><h2 id="cashflow-title">Cash movement</h2></div>
+                  <div class="segmented-control" id="range-controls" role="group" aria-label="Cash movement range">
+                    <button type="button" class="is-selected" data-range="30D" aria-pressed="true">30D</button>
+                    <button type="button" data-range="90D" aria-pressed="false">90D</button>
+                    <button type="button" data-range="YTD" aria-pressed="false">YTD</button>
+                  </div>
+                </div>
+                <div class="chart-summary"><strong id="chart-total">$28.4M</strong><span id="chart-caption">in net movement over the last 30 days</span><span class="trend trend--positive">↗ 14.2%</span></div>
+                <div class="chart-wrap">
+                  <div class="chart-y-labels" aria-hidden="true"><span>$12M</span><span>$8M</span><span>$4M</span><span>$0</span></div>
+                  <div class="chart-area">
+                    <div class="chart-gridlines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                    <div class="bar-chart" id="bar-chart" aria-label="Cash movement bar chart" role="img">
+                      <span class="chart-bar" style="--bar-height: 46%"><i></i></span><span class="chart-bar" style="--bar-height: 63%"><i></i></span><span class="chart-bar" style="--bar-height: 55%"><i></i></span><span class="chart-bar" style="--bar-height: 76%"><i></i></span><span class="chart-bar" style="--bar-height: 68%"><i></i></span><span class="chart-bar" style="--bar-height: 84%"><i></i></span><span class="chart-bar" style="--bar-height: 72%"><i></i></span><span class="chart-bar" style="--bar-height: 95%"><i></i></span><span class="chart-bar" style="--bar-height: 78%"><i></i></span><span class="chart-bar" style="--bar-height: 88%"><i></i></span><span class="chart-bar" style="--bar-height: 67%"><i></i></span><span class="chart-bar" style="--bar-height: 100%"><i></i></span></div>
+                    <div class="chart-x-labels" aria-hidden="true"><span>Sep 24</span><span>Oct 01</span><span>Oct 08</span><span>Oct 15</span><span>Oct 23</span></div>
+                  </div>
+                </div>
+                <div class="chart-legend"><span><i class="legend-dot legend-dot--inflow"></i> Inflows</span><span><i class="legend-dot legend-dot--outflow"></i> Outflows</span><span class="chart-note">Illustrative data</span></div>
+              </section>
+
+              <section class="card approvals-card" aria-labelledby="approvals-title">
+                <div class="card-header"><div><div class="eyebrow">Needs your attention</div><h2 id="approvals-title">Approval queue</h2></div><button class="link-button" type="button" data-action="view-approvals">View all <span aria-hidden="true">→</span></button></div>
+                <div class="approval-list" id="approval-list">
+                  <article class="approval-row" data-approval-id="ap-1"><div class="approval-avatar approval-avatar--orange">OC</div><div class="approval-copy"><strong>Office lease renewal</strong><span>Operations · Due today</span></div><div class="approval-amount">$84,000</div><button class="approval-more" type="button" aria-label="Review office lease renewal" data-approval-action="review" data-approval-name="Office lease renewal">•••</button></article>
+                  <article class="approval-row" data-approval-id="ap-2"><div class="approval-avatar approval-avatar--blue">PD</div><div class="approval-copy"><strong>Professional services</strong><span>Legal · Due Oct 24</span></div><div class="approval-amount">$26,500</div><button class="approval-more" type="button" aria-label="Review professional services" data-approval-action="review" data-approval-name="Professional services">•••</button></article>
+                  <article class="approval-row" data-approval-id="ap-3"><div class="approval-avatar approval-avatar--purple">TR</div><div class="approval-copy"><strong>Q4 travel allocation</strong><span>People · Due Oct 25</span></div><div class="approval-amount">$18,750</div><button class="approval-more" type="button" aria-label="Review Q4 travel allocation" data-approval-action="review" data-approval-name="Q4 travel allocation">•••</button></article>
+                  <article class="approval-row" data-approval-id="ap-4"><div class="approval-avatar approval-avatar--green">IT</div><div class="approval-copy"><strong>Security platform renewal</strong><span>Technology · Due Oct 28</span></div><div class="approval-amount">$12,200</div><button class="approval-more" type="button" aria-label="Review security platform renewal" data-approval-action="review" data-approval-name="Security platform renewal">•••</button></article>
+                </div>
+                <div class="card-footer"><span><span class="status-dot status-dot--amber"></span> 4 items require action</span><button class="button button--small button--secondary" type="button" data-action="new-approval">Create approval</button></div>
+              </section>
+            </div>
+
+            <div class="dashboard-grid dashboard-grid--lower">
+              <section class="card activity-card" aria-labelledby="activity-title">
+                <div class="card-header"><div><div class="eyebrow">Latest events</div><h2 id="activity-title">Recent activity</h2></div><button class="link-button" type="button" data-action="view-activity">View activity log <span aria-hidden="true">→</span></button></div>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>Activity</th><th>Owner</th><th>Status</th><th>Amount</th><th>Updated</th></tr></thead>
+                    <tbody id="activity-table">
+                      <tr data-searchable="Vendor onboarding packet Acme Facilities procurement"><td><div class="activity-cell"><span class="activity-icon activity-icon--blue">↗</span><div><strong>Vendor onboarding packet</strong><small>Acme Facilities</small></div></div></td><td>Procurement</td><td><span class="pill pill--success">Complete</span></td><td>$84,000</td><td>8 min ago</td></tr>
+                      <tr data-searchable="Monthly close September finance"><td><div class="activity-cell"><span class="activity-icon activity-icon--purple">≡</span><div><strong>Monthly close · September</strong><small>Finance operations</small></div></div></td><td>Finance</td><td><span class="pill pill--info">In review</span></td><td>—</td><td>42 min ago</td></tr>
+                      <tr data-searchable="Employee access review people security"><td><div class="activity-cell"><span class="activity-icon activity-icon--orange">✓</span><div><strong>Employee access review</strong><small>Quarterly certification</small></div></div></td><td>People</td><td><span class="pill pill--warning">Due soon</span></td><td>—</td><td>2 hrs ago</td></tr>
+                      <tr data-searchable="Treasury allocation Morgan Stanley finance"><td><div class="activity-cell"><span class="activity-icon activity-icon--green">$</span><div><strong>Treasury allocation</strong><small>Short-duration portfolio</small></div></div></td><td>Treasury</td><td><span class="pill pill--success">Posted</span></td><td>$34.1M</td><td>Yesterday</td></tr>
+                    </tbody>
+                  </table>
+                  <div class="table-empty" id="table-empty" hidden>No activity matches your search.</div>
+                </div>
+              </section>
+
+              <section class="card quick-actions-card" aria-labelledby="quick-actions-title">
+                <div class="card-header"><div><div class="eyebrow">Move work forward</div><h2 id="quick-actions-title">Quick actions</h2></div><span class="card-header-mark">✦</span></div>
+                <div class="quick-actions-list">
+                  <button type="button" class="quick-action" data-action="new-transaction"><span class="quick-action-icon quick-action-icon--orange">＋</span><span><strong>Record a transaction</strong><small>Capture a payment, receipt, or journal entry</small></span><span class="quick-action-arrow">→</span></button>
+                  <button type="button" class="quick-action" data-action="new-vendor"><span class="quick-action-icon quick-action-icon--blue">⌁</span><span><strong>Add a vendor</strong><small>Start onboarding a new supplier</small></span><span class="quick-action-arrow">→</span></button>
+                  <button type="button" class="quick-action" data-action="new-approval"><span class="quick-action-icon quick-action-icon--purple">✓</span><span><strong>Request approval</strong><small>Route a decision to the right owner</small></span><span class="quick-action-arrow">→</span></button>
+                </div>
+                <div class="quick-actions-note"><span class="status-dot"></span><span>Everything here is ready to connect to your operating data.</span></div>
+              </section>
+            </div>
+          </section>
+
+          <section id="module-view" class="view module-view" aria-live="polite" hidden></section>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="modal-backdrop" id="action-modal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description">
+        <div class="modal-header"><div><div class="eyebrow">Workspace action</div><h2 id="modal-title">Create something new</h2></div><button class="icon-button" type="button" aria-label="Close dialog" data-action="close-modal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></div>
+        <p class="modal-intro" id="modal-description">Choose an action to begin. The data layer will be connected in the next implementation slice.</p>
+        <div class="modal-options" id="modal-options"></div>
+        <div class="modal-footer"><span class="modal-footnote">Starter workspace · Illustrative data</span><button class="button button--secondary" type="button" data-action="close-modal">Cancel</button></div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,13 @@
+{
+  "name": "blevins-erp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BlevinsERP workspace shell and first operational dashboard slice.",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check app.js && node --check server.mjs && node --check scripts/smoke-test.mjs && node scripts/smoke-test.mjs"
+  }
+}
+
